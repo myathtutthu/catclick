@@ -44,15 +44,21 @@
             let litab = document.createElement("li");
             let textnode = document.createTextNode(item.name);
             litab.setAttribute('data', item.url)
+            litab.setAttribute('id', item.name)
             litab.appendChild(textnode);
             document.getElementById("cat-list").appendChild(litab);
-            litab.addEventListener("click", function () {
-                document.getElementById("cat-list-img").src = litab.getAttribute('data')
-                let count = item.clickCount;
-                document.getElementById("show-click-count").innerHTML+=count++;
-            }, false);
 
         });
+        let count = 0;
+        document.getElementById("cat-list").addEventListener("click", function (e) {
+            
+            if (e.target && e.target.nodeName == "LI") {
+                document.getElementById("cat-list-img").src = document.getElementById(e.target.id).getAttribute('data')
+                document.getElementById("show-click-count").innerHTML = count++;
+                console.log(e.target.id + " was clicked");
+            }
+        });
+
 
     </script>
 </body>
