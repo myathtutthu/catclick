@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PADC Myanmar - cat clicker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <ul id="cat-list">
+    </ul>
+    <p>Click Count is</p>
+    <p id="show-click-count"></p>
+    <img src="" alt="" id="cat-list-img">
+    <script>
+        const cats = [
+            {
+                "name": "Cat A",
+                "clickCount": 0,
+                "url": "https://lh5.ggpht.com/LfjkdmOKkGLvCt-VuRlWGjAjXqTBrPjRsokTNKBtCh8IFPRetGaXIpTQGE2e7ZCUaG2azKNkz38KkbM_emA=s0#w=640&h=454"
+            },
+            {
+                "name": "Cat B",
+                "clickCount": 0,
+                "url": "https://lh3.ggpht.com/nlI91wYNCrjjNy5f-S3CmVehIBM4cprx-JFWOztLk7vFlhYuFR6YnxcT446AvxYg4Ab7M1Fy0twaOCWYcUk=s0#w=640&h=426"
+            },
+            {
+                "name": "Cat C",
+                "clickCount": 0,
+                "url": "https://lh3.ggpht.com/kixazxoJ2ufl3ACj2I85Xsy-Rfog97BM75ZiLaX02KgeYramAEqlEHqPC3rKqdQj4C1VFnXXryadFs1J9A=s0#w=640&h=496"
+            },
+            {
+                "name": "Cat D",
+                "clickCount": 0,
+                "url": "https://d17h27t6h515a5.cloudfront.net/topher/2017/March/58b8af2f_nd001-cat-clicker/nd001-cat-clicker.jpg"
+            },
+            {
+                "name": "Cat E",
+                "clickCount": 0,
+                "url": "https://uploads.scratch.mit.edu/users/avatars/1385/1878.png"
+            }
+        ]
+        cats.forEach(function (item, index) {
+            let litab = document.createElement("li");
+            let textnode = document.createTextNode(item.name);
+            litab.setAttribute('data', item.url)
+            litab.appendChild(textnode);
+            document.getElementById("cat-list").appendChild(litab);
+            litab.addEventListener("click", function () {
+                document.getElementById("cat-list-img").src = litab.getAttribute('data')
+                let count = item.clickCount;
+                document.getElementById("show-click-count").innerHTML+=count++;
+            }, false);
+
+        });
+
+    </script>
+</body>
+
+</html>
